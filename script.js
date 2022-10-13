@@ -1,6 +1,6 @@
 // Rock, Paper, Scissors
 
-// Random generation of rock, paper, or scissors from the computer side
+// Random generation of either rock, paper, or scissors from the computer side
 
 const max = 4;
 const min = 1;
@@ -22,24 +22,28 @@ let computerSelection = getComputerChoice(randomNum);
 // All possible outcomes based on user input and computer selection
 
 function playRound(mySelection, computerSelection) {
-  mySelection = mySelection.toLowerCase();
-  if (mySelection == computerSelection) {
-    return "Tie! No winner."
+  if (mySelection != "rock" && mySelection != "paper" && mySelection != "scissors") {
+    return "invalid input. try again."
+  } else if (mySelection == computerSelection) {
+    return "tie. no winner."
   } else if (mySelection == "rock" && computerSelection == "scissors") {
-    return "You win! Rock beats scissors."
-  } else if (mySelection == "rock" && computerSelection == "paper") {
-    return "You lose! Paper beats rock."
-  } else if (mySelection == "paper" && computerSelection == "rock") {
-    return "You win! Paper beats rock."
-  } else if (mySelection == "paper" && computerSelection == "scissors") {
-    return "You lose! Scissors beats paper."
-  } else if (mySelection == "scissors" && computerSelection == "rock") {
-    return "You lose! Rock beats scissors."
+    return "you win! rock beats scissors."
   } else if (mySelection == "scissors" && computerSelection == "paper") {
-    return "You win! Scissors beats paper."
-  } else return "Invalid input. Try again."
+    return "you win! scissors beats paper."
+  } else if (mySelection == "paper" && computerSelection == "rock") {
+    return "you win! paper beats rock."
+  } else return `you lose. ${computerSelection} beats ${mySelection}.`
 }
 
+// Play five rounds of the game
 
+let myCount = 0;
+let computerCount = 0;
 
+function game(mySelection) {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound(mySelection, computerSelection));
+  }
+}
 
+console.log(game("scissors"));
