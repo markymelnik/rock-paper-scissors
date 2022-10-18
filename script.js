@@ -2,12 +2,11 @@
 
 // Random generation of either rock, paper, or scissors from the computer side
 
-const max = 4;
-const min = 1;
-const randomNum = Math.floor(Math.random() * (max - min) + min);
-
-function getComputerChoice(randomNum) {
-    switch(randomNum) {
+function getComputerChoice() {
+  const max = 4;
+  const min = 1;
+  const randomNum = Math.floor(Math.random() * (max - min) + min);   
+  switch(randomNum) {
       case 1: 
         return "rock";
       case 2:
@@ -17,33 +16,40 @@ function getComputerChoice(randomNum) {
     } 
 }
 
-let computerSelection = getComputerChoice(randomNum);
-
 // All possible outcomes based on user input and computer selection
 
-function playRound(mySelection, computerSelection) {
-  if (mySelection != "rock" && mySelection != "paper" && mySelection != "scissors") {
-    return "invalid input. try again."
-  } else if (mySelection == computerSelection) {
-    return "tie. no winner."
-  } else if (mySelection == "rock" && computerSelection == "scissors") {
-    return "you win! rock beats scissors."
-  } else if (mySelection == "scissors" && computerSelection == "paper") {
-    return "you win! scissors beats paper."
-  } else if (mySelection == "paper" && computerSelection == "rock") {
-    return "you win! paper beats rock."
-  } else return `you lose. ${computerSelection} beats ${mySelection}.`
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(playerSelection) {
+  let computerSelection = getComputerChoice();
+  if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+    console.log("invalid input. try again.")
+  } else if (playerSelection == computerSelection) {
+    console.log(`tie. ${playerSelection} is the same as ${computerSelection}. no winner.`);
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    console.log("you win! rock beats scissors.")
+    playerScore = playerScore + 1;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    console.log("you win! scissors beats paper.") 
+    playerScore = playerScore + 1;
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    console.log("you win! paper beats rock.")
+    playerScore = playerScore + 1;
+  } else { 
+    console.log(`you lose. ${computerSelection} beats ${playerSelection}.`)
+    computerScore = computerScore + 1;
+  }
 }
 
 // Play five rounds of the game
 
-let myCount = 0;
-let computerCount = 0;
-
-function game(mySelection) {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound(mySelection, computerSelection));
+function playGame(playerSelection) {
+  playerSelection = playerSelection.toLowerCase();
+  while (playerScore < 3 && computerScore < 3) {
+  playRound(playerSelection);
   }
+  if (playerScore == 3) {
+    console.log("You win!\nPlayer Score:", playerScore, "Computer Score:", computerScore)
+  } else console.log("You lose!\nPlayer Score:", playerScore, "Computer Score:", computerScore)
 }
-
-console.log(game("scissors"));
