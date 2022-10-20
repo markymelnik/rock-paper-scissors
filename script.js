@@ -1,5 +1,7 @@
 // Rock, Paper, Scissors (Best of 5!)
 
+window.addEventListener('load', playGame);
+
 // Prompt the player for an input and return a valid input of either 'rock', 'paper', or 'scissors'
 
 function getPlayerSelection() {
@@ -10,9 +12,7 @@ function getPlayerSelection() {
 // Random generation of either rock, paper, or scissors from the computer side
 
 function getComputerSelection() {
-  const max = 4;
-  const min = 1;
-  const randomNum = Math.floor(Math.random() * (max - min) + min);   
+  const randomNum = Math.floor(Math.random() * (4 - 1) + 1);   
   switch(randomNum) {
       case 1: 
         return 'rock';
@@ -29,24 +29,24 @@ let playerScore = 0;
 let computerScore = 0;
 
 function playRound() {
-  let playerSelection = getPlayerSelection();
+  let playerSelection = (getPlayerSelection()).toLowerCase();
   let computerSelection = getComputerSelection();
-  if (playerSelection.toLowerCase() != 'rock' && playerSelection.toLowerCase() != 'paper' && playerSelection.toLowerCase() != 'scissors') {
+  if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
     console.log(console.log(`'${playerSelection}' is an invalid input. Choose either rock, paper, or scissors.`));
   } else if (playerSelection == computerSelection) {
     console.log(`Tie. ${playerSelection} is the same as ${computerSelection}. no winner.`);
   } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-    console.log('You won this round! rock beats scissors.')
-    playerScore = playerScore + 1;
+    console.log('You won this round! Rock beats scissors.');
+    playerScore+=1;
   } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-    console.log('You won this round! Scissors beats paper.') 
-    playerScore = playerScore + 1;
+    console.log('You won this round! Scissors beats paper.');
+    playerScore+=1;
   } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-    console.log('You won this round! Paper beats rock.')
-    playerScore = playerScore + 1;
+    console.log('You won this round! Paper beats rock.');
+    playerScore+=1;
   } else { 
-    console.log(`You lost this round. ${computerSelection} beats ${playerSelection}.`)
-    computerScore = computerScore + 1;
+    console.log(`You lost this round. ${computerSelection} beats ${playerSelection}.`);
+    computerScore+=1;
   }
 }
 
