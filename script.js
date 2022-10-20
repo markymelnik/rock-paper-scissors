@@ -1,5 +1,7 @@
 // Rock, Paper, Scissors (Best of 5!)
 
+// Automatic player prompt
+
 window.addEventListener('load', playGame);
 
 // Prompt the player for an input and return a valid input of either 'rock', 'paper', or 'scissors'
@@ -12,13 +14,14 @@ function getPlayerSelection() {
 // Random generation of either rock, paper, or scissors from the computer side
 
 function getComputerSelection() {
-  const randomNum = Math.floor(Math.random() * (4 - 1) + 1);   
+  
+  const randomNum = Math.floor(Math.random() * (3));   
   switch(randomNum) {
-      case 1: 
+      case 0: 
         return 'rock';
-      case 2:
+      case 1:
         return 'paper';
-      case 3:
+      case 2:
         return 'scissors';
     } 
 }
@@ -31,22 +34,24 @@ let computerScore = 0;
 function playRound() {
   let playerSelection = (getPlayerSelection()).toLowerCase();
   let computerSelection = getComputerSelection();
-  if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+  if (playerSelection != 'rock' 
+    && playerSelection != 'paper' 
+    && playerSelection != 'scissors') {
     console.log(console.log(`'${playerSelection}' is an invalid input. Choose either rock, paper, or scissors.`));
   } else if (playerSelection == computerSelection) {
     console.log(`Tie. ${playerSelection} is the same as ${computerSelection}. no winner.`);
   } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
     console.log('You won this round! Rock beats scissors.');
-    playerScore+=1;
+    playerScore += 1;
   } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
     console.log('You won this round! Scissors beats paper.');
-    playerScore+=1;
+    playerScore += 1;
   } else if (playerSelection == 'paper' && computerSelection == 'rock') {
     console.log('You won this round! Paper beats rock.');
-    playerScore+=1;
+    playerScore += 1;
   } else { 
     console.log(`You lost this round. ${computerSelection} beats ${playerSelection}.`);
-    computerScore+=1;
+    computerScore += 1;
   }
 }
 
@@ -58,6 +63,6 @@ function playGame() {
   console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
   }
   if (playerScore == 3) {
-    console.log(`You won the game!\nPlayer Score: ${playerScore}, Computer Score: ${computerScore}`)
-  } else console.log(`You lost the game! The computer won.\nPlayer Score: ${playerScore}, Computer Score: ${computerScore}`)
+    console.log(`You won the game!\nPlayer Score: ${playerScore}, Computer Score: ${computerScore}`);
+  } else console.log(`You lost the game! The computer won.\nPlayer Score: ${playerScore}, Computer Score: ${computerScore}`);
 }
