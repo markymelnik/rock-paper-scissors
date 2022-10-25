@@ -26,7 +26,13 @@ choiceBtn.forEach(button => button.addEventListener("click", () => {
 }));
 
 resetBtn.addEventListener("click", () => {
-  window.location.reload();
+  playerScore = 0;
+  computerScore = 0;
+  playerText.textContent = `Player: `;
+  computerText.textContent = `Computer: `;
+  resultText.textContent = `Result: `;
+  scoreText.textContent = `Player Score: _ | Computer Score: _`;
+  choiceText.textContent = `Make your choice!`;
 });
 
 function getComputerSelection() {
