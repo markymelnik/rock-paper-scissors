@@ -1,0 +1,65 @@
+* {background-color: #CEF9FE}
+
+.gameTitle {
+    font-family: monaco;
+    text-align: center;
+    font-size: 25px;  
+}
+    
+.gameText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: monaco; 
+    font-size: 14px;
+}
+
+.scoreText {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: monaco;
+    margin: 20px;
+    font-size: 12px;
+}
+
+.choiceText {
+    display: flex;
+    justify-content: center;
+    font-family: monaco;
+    font-size: 16px;
+}
+
+.gameBtns {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    gap: 20px;
+}
+
+.choiceBtn {
+    font-family: monaco;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #229AE3;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 140px;
+
+}
+
+.resetBtn {
+    font-family: monaco;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #447CFC;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 200px;   
+}
