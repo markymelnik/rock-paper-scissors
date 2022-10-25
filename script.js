@@ -33,6 +33,7 @@ resetBtn.addEventListener("click", () => {
   resultText.textContent = `Result: `;
   scoreText.textContent = `Player Score: _ | Computer Score: _`;
   choiceText.textContent = `Make your choice!`;
+  resetBtn.style.visibility = "hidden";
 });
 
 function getComputerSelection() {
